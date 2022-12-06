@@ -1,0 +1,13 @@
+.dropdown {
+    position: relative;
+
+    .dropdownContent {
+        background-color: #f5f5f5;
+        border-radius: 0 0 0.6rem 0.6rem;
+        box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.25);
+        padding: 1.6rem;
+        position: absolute;
+        width: 100%;
+        z-index: 1;
+    }
+}

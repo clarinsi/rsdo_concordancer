@@ -1,0 +1,72 @@
+@import '../../variables';
+
+.details {
+    background-color: #ffffff;
+    border-radius: 0.8rem;
+    box-shadow: 0 0.4rem 1.6rem rgba(0, 0, 0, 0.08);
+    margin: 1.6rem 0;
+    padding: 2.4rem 2.8rem;
+    position: relative;
+
+    .tabs {
+        border-bottom: 1px solid $border-color;
+        margin-bottom: 2.2rem;   
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+
+            li {
+                display: inline-block;
+                padding: 0 2rem;
+
+                button {
+                    color: $text-color-secondary;
+                    font-size: 1.6rem;
+                    font-weight: 500;
+                    text-decoration: none;
+
+                    &:focus,
+                    &:hover {
+                        color: $primary-color;
+                        box-shadow: none;
+                    }
+                }
+
+                &.active {
+                    border-bottom: 3px solid $primary-color;
+
+                    button {
+                        color: $primary-color;
+                    }
+                }
+            }
+        }
+
+        .close {
+            position: absolute;
+            right: 2.8rem;
+            top: 2.4rem;
+        }
+    }
+
+    .mainContent {
+        border-right: 2px solid $border-color;
+        padding-right: 3rem;
+
+        @media (max-width: 991.98px) {
+            border-right: none;
+            margin-bottom: 3rem;
+            padding-right: 0;
+         }
+    }
+
+    .textInfo {
+        padding-left: 3rem;
+
+        @media (max-width: 991.98px) {
+            padding-left: 0;
+        }
+    }
+}

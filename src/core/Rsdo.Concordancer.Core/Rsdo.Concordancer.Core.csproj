@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <EnableNETAnalyzers>false</EnableNETAnalyzers>
+        <Version>1.0.0</Version>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Rsdo.StyleCop" Version="1.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Rsdo.Concordancer.ServiceModel\Rsdo.Concordancer.ServiceModel.csproj" />
+    </ItemGroup>
+
+</Project>

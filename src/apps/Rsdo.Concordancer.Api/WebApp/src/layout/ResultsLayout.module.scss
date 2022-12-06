@@ -1,0 +1,89 @@
+@import '../variables';
+
+.menu {
+    background-color: $primary-color;
+    height: 6.4rem;
+
+    :global(.container-fluid),
+    :global(.row) {
+        height: 100%;
+    }
+
+    ul.areaButtons {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        float: right;
+
+        li.areaButton {
+            align-items: center;
+            display: inline-flex;
+            background-color: #ffffff;
+            border-radius: 0.8rem;
+            height: 4.6rem;
+            justify-content: center;
+            margin-right: 0.4rem;
+            width: 4.6rem;
+        }
+    }
+
+    .searchInput {
+        align-items: center;
+        background-color: #f5f5f5;
+        border-radius: 0.6rem 0.6rem 0.6rem 0.6rem;
+        display: flex;
+        height: 4.6rem;
+
+        &.dropdownActive {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        button {
+            background-color: transparent;
+            border: none;
+        }
+
+        .searchButton {
+            margin-left: 2.5rem;
+        }
+
+        input {
+            background: transparent;
+            border: none;
+            color: #3a464e;
+            flex-grow: 1;
+            font-size: 1.6rem;
+            font-weight: 500;
+            line-height: 1.9rem;
+            margin-left: 2.6rem;
+
+            &:focus {
+                outline: none;
+            }
+        }
+
+        .historyButton {
+            margin-left: 1.9rem;
+        }
+
+        .helpButton {
+            margin: 0 1.8rem 0 1.9rem;
+        }
+    }
+}
+
+.results {
+    padding-top: 4.6rem;
+}
+
+.footer {
+    background-color: #d9d9d9;
+    height: 4rem;
+    margin-top: 1.6rem;
+
+    :global(.container-fluid),
+    :global(.row) {
+        height: 100%;
+    }
+}

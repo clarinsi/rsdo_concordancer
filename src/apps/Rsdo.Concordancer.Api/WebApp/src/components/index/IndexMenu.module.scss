@@ -1,0 +1,25 @@
+@import '../../variables';
+
+.menu {
+    background-color: $primary-color;
+    height: 15.4rem;
+
+    :global(.container-fluid),
+    :global(.row) {
+        height: 100%;
+    }
+
+    .links {
+        text-align: right;
+
+        button {
+            background-color: transparent;
+            border: none;
+            color: #f5f5f5;
+
+            img {
+                margin-right: 0.625rem;
+            }
+        }
+    }
+}

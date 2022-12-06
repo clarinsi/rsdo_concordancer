@@ -1,0 +1,12 @@
+@import '../../variables';
+
+.alternateSearchItem {
+    border-bottom: 1px solid $border-color;
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.8rem;
+
+    a {
+        color: $text-color;
+        text-decoration: none;
+    }
+}

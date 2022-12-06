@@ -1,0 +1,22 @@
+@import '../../variables';
+
+.textInfo {
+    border-bottom: 1px solid $border-color;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+
+    &:last-child {
+        border-bottom: none;
+    }
+
+    h5 {
+        color: $primary-color;
+        font-size: 1.6rem;
+        font-weight: 500;
+        margin-bottom: 1.6rem;
+    }
+
+    p {
+        margin: 0;        
+    }
+}

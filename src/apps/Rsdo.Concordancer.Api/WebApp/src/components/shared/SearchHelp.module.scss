@@ -1,0 +1,36 @@
+@import '../../variables';
+
+.help {
+    padding: 0 5rem 4.9rem 3.8rem;
+
+    h3 {
+        color: $primary-color;
+        font-size: 1.8rem;
+        margin-bottom: 2.8rem;
+        margin-top: 1.9rem;
+    }
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+            border-bottom: 1px solid $border-color;
+            margin-bottom: 2.8rem;
+            padding-bottom: 2.6rem;
+
+            h4 {
+                color: $primary-color;
+                font-size: 1.6rem;
+            }
+
+            p {
+                color: $text-color;
+                font-size: 1.6rem;
+                margin: 0;
+                padding: 0;
+            }
+        }
+    }
+}
