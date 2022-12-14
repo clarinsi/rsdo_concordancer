@@ -9,7 +9,7 @@ const IndexStatistics = () => {
     const search = useSearch();
     const corpusId = search.corpusId;
 
-    const fetchStatistics = () => fetch(`${window.baseAppPath}/concordancer/corpus/${corpusId}/stats`, {
+    const fetchStatistics = () => fetch(`${process.env.PUBLIC_URL}/concordancer/corpus/${corpusId}/stats`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'

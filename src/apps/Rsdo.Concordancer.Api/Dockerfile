@@ -4,6 +4,12 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 
+# INSTALL NODE.JS
+RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - \
+    && apt-get install -y \
+        nodejs \
+    && rm -rf /var/lib/apt/lists/*
+
 # COPY LOCAL NUGET PACKAGES
 WORKDIR /nuget
 COPY local-packages/. .
@@ -36,8 +42,14 @@ COPY src/core/Rsdo.Concordancer.Infrastructure/. Rsdo.Concordancer.Infrastructur
 COPY src/core/Rsdo.Concordancer.ServiceModel/. Rsdo.Concordancer.ServiceModel/
 COPY src/core/Rsdo.Concordancer.Services/. Rsdo.Concordancer.Services/
 
-# BUILD
+# BUILD WEBAPP AND AFTER THAT API, WHICH INCLUDES WEBAPP
 FROM build AS publish
+
+WORKDIR /src/apps/Rsdo.Concordancer.Api/WebApp
+ARG WEBAPP_PUBLIC_URL=''
+ENV PUBLIC_URL=${WEBAPP_PUBLIC_URL}
+RUN npm install && npm run build
+
 WORKDIR /src/apps/Rsdo.Concordancer.Api
 RUN dotnet publish "Rsdo.Concordancer.Api.csproj" -c Release -o /app/publish
 

@@ -144,7 +144,7 @@ public class Startup
             {
                 endpoints.MapControllers();
                 endpoints.MapHangfireDashboard("/hangfire");
-                endpoints.MapFallbackToController("Index", "WebApp");
+                endpoints.MapFallbackToFile("index.html");
             });
     }
 }

@@ -21,7 +21,7 @@ const ConcordanceResults = () => {
 
     const body = search.getSearchRequest();
 
-    const fetchConcordances = () => fetch(`${window.baseAppPath}/concordancer/corpus/${search.corpusId}/concordances/search`, {
+    const fetchConcordances = () => fetch(`${process.env.PUBLIC_URL}/concordancer/corpus/${search.corpusId}/concordances/search`, {
         method: 'POST',
         body: JSON.stringify(body),
         headers: {
@@ -34,7 +34,7 @@ const ConcordanceResults = () => {
 
     const { isLoading, isSuccess, isError, data, error } = useQuery(['concordances', body], fetchConcordances, { keepPreviousData: true, refetchOnWindowFocus: false });
     const [isVisible, setIsVisible] = useState(false);
-    const download = useDownload(`${window.baseAppPath}/concordancer/corpus/${search.corpusId}/concordances/export`);
+    const download = useDownload(`${process.env.PUBLIC_URL}/concordancer/corpus/${search.corpusId}/concordances/export`);
 
     const onExportClose = () => {
         setIsVisible(false);

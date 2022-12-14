@@ -20,7 +20,7 @@ const ConcordanceDetails = (props) => {
     const search = useSearch();
     const body = search.getDetailsRequest(props.paragraphId, props.tokenOrder);
 
-    const fetchDetails = () => fetch(`${window.baseAppPath}/concordancer/corpus/${search.corpusId}/concordances/details`, {
+    const fetchDetails = () => fetch(`${process.env.PUBLIC_URL}/concordancer/corpus/${search.corpusId}/concordances/details`, {
         method: 'POST',
         body: JSON.stringify(body),
         headers: {

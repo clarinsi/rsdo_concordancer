@@ -20,7 +20,7 @@ const ListResults = () => {
     const history = useHistory();
     const body = search.getSearchRequest();
 
-    const fetchList = () => fetch(`${window.baseAppPath}/concordancer/corpus/${search.corpusId}/list/search`, {
+    const fetchList = () => fetch(`${process.env.PUBLIC_URL}/concordancer/corpus/${search.corpusId}/list/search`, {
         method: 'POST',
         body: JSON.stringify(body),
         headers: {
@@ -33,7 +33,7 @@ const ListResults = () => {
 
     const { isLoading, isSuccess, isError, data, error } = useQuery(['list', body], fetchList, { keepPreviousData: true, refetchOnWindowFocus: false });
     const [isVisible, setIsVisible] = useState(false);
-    const download = useDownload(`${window.baseAppPath}/concordancer/corpus/${search.corpusId}/list/export`);
+    const download = useDownload(`${process.env.PUBLIC_URL}/concordancer/corpus/${search.corpusId}/list/export`);
 
     const onExportClose = () => {
         setIsVisible(false);

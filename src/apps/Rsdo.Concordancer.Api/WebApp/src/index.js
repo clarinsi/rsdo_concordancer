@@ -13,10 +13,11 @@ if (language) {
   i18n.changeLanguage(language);
 }
 
+const baseUrl = document.getElementsByTagName('base')[0].getAttribute('href');
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter basename={window.baseAppPath}>
+    <BrowserRouter basename={baseUrl}>
       <App />
     </BrowserRouter>
   </React.StrictMode>

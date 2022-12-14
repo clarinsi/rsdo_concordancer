@@ -16,9 +16,4 @@ public static class ConfigurationKey
     {
         public const string ClasslaTokenizerUrl = "RSDO:Tokenizer:ClasslaUrl";
     }
-
-    public static class Web
-    {
-        public const string BaseAppPath = "RSDO:Web:BaseAppPath";
-    }
 }
