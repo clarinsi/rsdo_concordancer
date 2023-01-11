@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using OpenSearch.Client;
 using Rsdo.Concordancer.Infrastructure.Search.Extensions;
@@ -27,23 +28,27 @@ public abstract class BaseAddRecordsHandler<TEntity, TElasticEntity> : IAddRecor
         // Get index name
         var indexName = indexProvider.IndexName;
 
-        // Create request
-        var request = new BulkRequest(indexName)
+        // Batch entities by 1000
+        foreach (var batch in entities.Chunk(1000))
         {
-            Operations = new List<IBulkOperation>(),
-            Timeout = TimeSpan.FromMinutes(5),
-        };
+            // Create request
+            var request = new BulkRequest(indexName)
+            {
+                Operations = new List<IBulkOperation>(),
+                Timeout = TimeSpan.FromMinutes(5),
+            };
 
-        // Convert entities to elastic entities
-        foreach (var entity in entities)
-        {
-            var elasticEntity = ConvertEntity(entity);
-            request.Operations.Add(new BulkIndexOperation<TElasticEntity>(elasticEntity));
+            // Convert entities to elastic entities
+            foreach (var entity in batch)
+            {
+                var elasticEntity = ConvertEntity(entity);
+                request.Operations.Add(new BulkIndexOperation<TElasticEntity>(elasticEntity));
+            }
+
+            // Get response
+            var response = await client.BulkAsync(request);
+            response.ThrowIfInvalid();
         }
-
-        // Get response
-        var response = await client.BulkAsync(request);
-        response.ThrowIfInvalid();
     }
 
     protected abstract TElasticEntity ConvertEntity(TEntity entity);

@@ -90,39 +90,35 @@ public class IndexTextHandler : IRequestHandler<IndexText, ExecutionResult>
 
     private static List<Concordance> GetConcordances(Text text, Paragraph paragraph, List<Token> tokens)
     {
-        // Get window size (max 10)
-        var windowSize = Math.Min(tokens.Count - 1, 10);
-
-        // Create list of tokens with positions
-        var tokensIdx = tokens.Select((t, i) => new KeyValuePair<int, Token>(i, t)).ToList();
-
-        // Get tokens which will appear in current concordance
-        List<KeyValuePair<int, Token>> concordanceTokens;
-
         var concordances = new List<Concordance>();
-        while ((concordanceTokens = tokensIdx.Where(x => x.Key >= -windowSize && x.Key <= windowSize).ToList().OrderBy(x => x.Key).ToList()).Any())
+        for (var i = 0; i < tokens.Count; i++)
         {
-            if (concordanceTokens.Last().Key < 0)
-            {
-                break;
-            }
-
             var concordance = new Concordance()
             {
                 ParagraphId = paragraph.Id,
                 TextId = text.Id,
             };
 
-            // Loop through tokens and set it in the position
-            foreach (var concordanceToken in concordanceTokens)
+            // set center token
+            concordance.SetToken(tokens[i], 0);
+
+            // set left and right context tokens
+            for (var c = 1; c <= 10; c++)
             {
-                concordance.SetToken(concordanceToken.Value, concordanceToken.Key);
+                // left context
+                if (i - c >= 0)
+                {
+                    concordance.SetToken(tokens[i - c], -c);
+                }
+
+                // right context
+                if (i + c < tokens.Count)
+                {
+                    concordance.SetToken(tokens[i + c], c);
+                }
             }
 
             concordances.Add(concordance);
-
-            // Decrease indexes of tokens (shift tokens to left, relative to window size)
-            tokensIdx = tokensIdx.Select(x => new KeyValuePair<int, Token>(x.Key - 1, x.Value)).ToList();
         }
 
         return concordances;
