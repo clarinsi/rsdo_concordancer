@@ -109,7 +109,7 @@ public class ImportTermListHandler : IRequestHandler<ImportTermList, ExecutionRe
                         Lemma = termObj["kandidat"].Value<string>(),
                         Msd = termObj["POSoznake"].Value<string>(),
                         Weight = termObj["ranking"].Value<decimal>(),
-                        Frequency = termObj["pogostostpojavljanja"].Value<int>(),
+                        Frequency = termObj["pogostostpojavljanja"].Values<int>().First(),
                         TermListAutoId = termList.AutoId,
                     }.ApplyCreateValues();
 
