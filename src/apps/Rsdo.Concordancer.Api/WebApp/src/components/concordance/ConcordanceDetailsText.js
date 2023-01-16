@@ -1,6 +1,6 @@
-import { useTranslation } from 'react-i18next';
+import ConcordanceDetailsTextInfo from './ConcordanceDetailsTextInfo';
 
-import sytles from './ConcordanceDetailsText.module.scss';
+import { useTranslation } from 'react-i18next';
 
 const ConcordanceDetailsText = (props) => {
     // Hooks
@@ -8,22 +8,10 @@ const ConcordanceDetailsText = (props) => {
 
     return (
         <>
-            <div className={sytles.textInfo}>
-                <h5>{t('concordance.detailsTextSource')}</h5>
-                <p>{props.source}</p>
-            </div>
-            <div className={sytles.textInfo}>
-                <h5>{t('concordance.detailsTextYear')}</h5>
-                <p>{props.year}</p>
-            </div>
-            <div className={sytles.textInfo}>
-                <h5>{t('concordance.detailsTextTitle')}</h5>
-                <p>{props.title}</p>
-            </div>
-            <div className={sytles.textInfo}>
-                <h5>{t('concordance.detailsTextAuthor')}</h5>
-                <p>{props.author}</p>
-            </div>
+            <ConcordanceDetailsTextInfo title={t('concordance.detailsTextSource')} value={props.source} />
+            <ConcordanceDetailsTextInfo title={t('concordance.detailsTextYear')} value={props.year} />
+            <ConcordanceDetailsTextInfo title={t('concordance.detailsTextTitle')} value={props.title} />
+            <ConcordanceDetailsTextInfo title={t('concordance.detailsTextAuthor')} value={props.author} />
         </>
     );
 };
