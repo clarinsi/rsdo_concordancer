@@ -75,21 +75,6 @@ public class ExportConcordancesHandler : BaseSearchConcordancesHandler, IRequest
         };
     }
 
-    private async Task<Dictionary<Guid, string>> GetSources(List<SearchConcordancesResponseItem> items)
-    {
-        var paragraphIds = items.Select(i => i.ParagraphId).ToList();
-        var sources = await dbContext.Paragraph.Include(p => p.Text)
-            .Where(p => paragraphIds.Contains(p.Id))
-            .Select(
-                p => new
-                {
-                    p.Id,
-                    p.Text.SourceFile,
-                })
-            .ToListAsync();
-        return sources.ToDictionary(x => x.Id, x => Path.GetFileNameWithoutExtension(x.SourceFile));
-    }
-
     private static async Task WriteContext(StreamWriter writer, List<ConcordanceToken> tokens)
     {
         if (tokens != null)
@@ -131,5 +116,20 @@ public class ExportConcordancesHandler : BaseSearchConcordancesHandler, IRequest
         await writer.WriteAsync("\t");
         await writer.WriteAsync(source);
         await writer.WriteLineAsync();
+    }
+
+    private async Task<Dictionary<Guid, string>> GetSources(List<SearchConcordancesResponseItem> items)
+    {
+        var paragraphIds = items.Select(i => i.ParagraphId).ToList();
+        var sources = await dbContext.Paragraph.Include(p => p.Text)
+            .Where(p => paragraphIds.Contains(p.Id))
+            .Select(
+                p => new
+                {
+                    p.Id,
+                    p.Text.SourceFile,
+                })
+            .ToListAsync();
+        return sources.ToDictionary(x => x.Id, x => Path.GetFileNameWithoutExtension(x.SourceFile));
     }
 }
