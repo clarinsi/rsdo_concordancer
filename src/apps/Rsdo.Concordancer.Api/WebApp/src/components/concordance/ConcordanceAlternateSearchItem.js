@@ -6,7 +6,7 @@ const ConcordanceAlternateSearchItem = (props) => {
     const search = useSearch();
     const link = search.getAlternateSearchLink(props.search);
     return (
-        <li className={styles.alternateSearchItem}><Link to={link}>{props.title}<span className='float-end'>{props.count}</span></Link></li>
+        <li className={styles.alternateSearchItem}><Link to={link}><span className={styles.title}>{props.title}</span><span className={styles.count}>{props.count}</span></Link></li>
     );
 };
 

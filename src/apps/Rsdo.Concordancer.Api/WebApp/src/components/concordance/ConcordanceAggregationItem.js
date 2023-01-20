@@ -8,7 +8,7 @@ const ConcordanceAggregationItem = (props) => {
     const link = isSelected ? search.getClearFilterLink('TextIds', props.filterKey) : search.getFilterLink('TextIds', props.filterKey);
 
     return (
-        <li className={styles.aggregationItem}><Link to={link}>{isSelected && <span>X - </span>}{props.title}<span className='float-end'>{props.count}</span></Link></li>
+        <li className={styles.aggregationItem}><Link to={link}>{isSelected && <span className={styles.remove} >X</span>}<span className={styles.title}>{props.title}</span><span className={styles.count}>{props.count}</span></Link></li>
     );
 };
 

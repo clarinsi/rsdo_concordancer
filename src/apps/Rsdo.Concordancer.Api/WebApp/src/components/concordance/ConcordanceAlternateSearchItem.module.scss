@@ -7,6 +7,14 @@
 
     a {
         color: $text-color;
+        display: flex;
         text-decoration: none;
+
+        .title {
+            flex-grow: 1;
+            margin-right: 0.8rem;
+            overflow: hidden;
+            text-overflow: clip;
+        }
     }
 }
