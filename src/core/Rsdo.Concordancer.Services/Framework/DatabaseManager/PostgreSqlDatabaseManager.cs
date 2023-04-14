@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Npgsql;
 using Rsdo.Concordancer.Core.Interfaces;
+using Rsdo.Concordancer.ServiceModel.Types;
 using Rsdo.Concordancer.Services.Framework.DbContext;
 
 namespace Rsdo.Concordancer.Services.Framework.DatabaseManager;
@@ -57,7 +58,7 @@ public class PostgreSqlDatabaseManager : IDatabaseManager
     public async Task UpdateCorpusDatabases()
     {
         // Update all corpus databases
-        var corpusIds = await dbContext.Corpus.Select(c => c.Id).ToListAsync();
+        var corpusIds = await dbContext.Corpus.Where(s => s.Status == CorpusStatus.Active).Select(c => c.Id).ToListAsync();
         foreach (var corpusId in corpusIds)
         {
             var connectionString = connectionStringProvider.GetCorpusConnectionString(corpusId);
