@@ -5,17 +5,17 @@ docker build --no-cache -t rsdo-concordancer-systemmanager -f src/apps/Rsdo.Conc
 docker login ghcr.io
 
 docker tag rsdo-concordancer-api ghcr.io/clarinsi/rsdo-concordancer-api:latest
-docker tag rsdo-concordancer-api ghcr.io/clarinsi/rsdo-concordancer-api:v1.0.3
+docker tag rsdo-concordancer-api ghcr.io/clarinsi/rsdo-concordancer-api:v1.0.4
 docker tag rsdo-concordancer-api ghcr.io/clarinsi/rsdo-concordancer-api:v1.0
 docker tag rsdo-concordancer-api ghcr.io/clarinsi/rsdo-concordancer-api:v1
 
 docker tag rsdo-concordancer-api-term-portal ghcr.io/clarinsi/rsdo-concordancer-api-term-portal:latest
-docker tag rsdo-concordancer-api-term-portal ghcr.io/clarinsi/rsdo-concordancer-api-term-portal:v1.0.3
+docker tag rsdo-concordancer-api-term-portal ghcr.io/clarinsi/rsdo-concordancer-api-term-portal:v1.0.4
 docker tag rsdo-concordancer-api-term-portal ghcr.io/clarinsi/rsdo-concordancer-api-term-portal:v1.0
 docker tag rsdo-concordancer-api-term-portal ghcr.io/clarinsi/rsdo-concordancer-api-term-portal:v1
 
 docker tag rsdo-concordancer-systemmanager ghcr.io/clarinsi/rsdo-concordancer-systemmanager:latest
-docker tag rsdo-concordancer-systemmanager ghcr.io/clarinsi/rsdo-concordancer-systemmanager:v1.0.3
+docker tag rsdo-concordancer-systemmanager ghcr.io/clarinsi/rsdo-concordancer-systemmanager:v1.0.4
 docker tag rsdo-concordancer-systemmanager ghcr.io/clarinsi/rsdo-concordancer-systemmanager:v1.0
 docker tag rsdo-concordancer-systemmanager ghcr.io/clarinsi/rsdo-concordancer-systemmanager:v1
 
